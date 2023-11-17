@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Номер месяца</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function showMonth() {
+            var inputNumber = parseInt(document.getElementById('monthNumber').value);
+            var outputField = document.getElementById('outputMonth');
+
+            if (inputNumber >= 1 && inputNumber <= 12) {
+                var months = [
+                    'Январь', 'Февраль', 'Март', 'Апрель',
+                    'Май', 'Июнь', 'Июль', 'Август',
+                    'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+                ];
+
+                outputField.innerHTML = months[inputNumber - 1];
+            } else {
+                outputField.innerHTML = 'Введите число от 1 до 12';
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('monthNumber').value = '';
+            document.getElementById('outputMonth').innerHTML = '';
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Определение месяца по номеру</h2>
+
+    <form>
+        <label for="monthNumber">Введите число от 1 до 12:</label>
+        <input type="number" id="monthNumber" required>
+
+        <button type="button" onclick="showMonth()">Подтвердить ввод</button>
+        <button type="button" onclick="resetForm()">Сбросить</button>
+
+        <label for="outputMonth">Название месяца:</label>
+        <div id="outputMonth"></div>
+    </form>
+
+</body>
+</html>

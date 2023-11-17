@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetings and Guessing Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            margin: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            width: 60px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сегодня - <span id="currentDate"></span></h1>
+    
+    <form>
+        <label for="userInput">Введите число от 1 до 10:</label>
+        <input type="number" id="userInput" min="1" max="10">
+        <button type="button" onclick="checkNumber()">Проверить</button>
+    </form>
+
+    <script>
+        // Функция для форматирования текущей даты
+        function getCurrentDate() {
+            const now = new Date();
+            const daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+            const monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+            const dayOfWeek = daysOfWeek[now.getDay()];
+            const dayOfMonth = now.getDate();
+            const month = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            return `${dayOfMonth} ${month} ${year} года, ${hours}:${minutes}:${seconds}, ${dayOfWeek}`;
+        }
+
+        // Функция для создания массива и проверки введенного числа
+        function checkNumber() {
+            const userInput = document.getElementById('userInput').value;
+            const randomNumberArray = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10) + 1);
+
+            if (userInput >= 1 && userInput <= 10) {
+                const index = randomNumberArray.indexOf(parseInt(userInput, 10));
+
+                if (index !== -1) {
+                    alert(`Поздравляем! Вы угадали число. Это число под индексом ${index + 1} в массиве.`);
+                } else {
+                    alert('Увы, вы не угадали. Попробуйте еще раз.');
+                }
+            } else {
+                alert('Пожалуйста, введите число от 1 до 10.');
+            }
+        }
+
+        // Установка текущей даты на странице
+        document.getElementById('currentDate').innerText = getCurrentDate();
+    </script>
+</body>
+</html>

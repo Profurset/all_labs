@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Objects</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .bird-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .bird-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px;
+            width: 250px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Объект "Птица"</h1>
+
+    <div class="bird-container" id="birdContainer"></div>
+
+    <script>
+        // Определение объекта "Птица"
+        function Bird(name, color, wingspan) {
+            this.name = name;
+            this.color = color;
+            this.wingspan = wingspan;
+
+            // Метод: Лететь
+            this.fly = function() {
+                console.log(`${this.name} летит!`);
+            };
+
+            // Метод: Петь
+            this.sing = function() {
+                console.log(`${this.name} поет мелодию.`);
+            };
+
+            // Метод: Получить информацию
+            this.getInfo = function() {
+                return `Имя: ${this.name}, Цвет: ${this.color}, Размах крыльев: ${this.wingspan} см`;
+            };
+        }
+
+        // Создание 8 экземпляров объекта "Птица"
+        const birds = [
+            new Bird('Ласточка', 'серая', 15),
+            new Bird('Голубь', 'синий', 20),
+            new Bird('Финч', 'желтый', 10),
+            new Bird('Сокол', 'коричневый', 25),
+            new Bird('Канарейка', 'желтая', 12),
+            new Bird('Ворона', 'черная', 30),
+            new Bird('Попугай', 'разноцветный', 18),
+            new Bird('Чайка', 'белая', 22),
+        ];
+
+        // Вывод данных на страницу
+        const birdContainer = document.getElementById('birdContainer');
+
+        birds.forEach(bird => {
+            const birdCard = document.createElement('div');
+            birdCard.classList.add('bird-card');
+            birdCard.innerText = bird.getInfo();
+            birdContainer.appendChild(birdCard);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles3.css">
+    <title>Оформление заказа</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+   
+       
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Логотип">
+        </div>
+        <h1>Оформление заказа</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="menu.html">Меню</a></li>
+            <li><a href="order.html">Оформить заказ</a></li>
+            <li><a href="about.html">О нас</a></li>
+        </ul>
+    </nav>
+    <main>
+	<center><h2 class="m-title">Заказ пиццы:</h2></center>
+        <form>
+            <!-- Раздел информации о клиенте -->
+            <fieldset>
+                <legend>Информация о клиенте</legend>
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="address">Ваш адрес:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="phone">Ваш номер телефона:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            </fieldset>
+
+            <!-- Раздел выбора пиццы -->
+            <fieldset>
+                <legend>Выберите пиццу</legend>
+                <label for="pizza">Выберите вид пиццы:</label>
+                <select id="pizza" name="pizza" required>
+                    <option value="margherita">Маргарита</option>
+                    <option value="pepperoni">Пепперони</option>
+                    <option value="gavayskaya">Гавайская</option>
+                    <option value="syrnaya">Сырная</option>
+                    <option value="myasnaya">Мясная</option>
+                    <option value="burger">Бургер</option>
+                    <option value="cezar">Цезарь</option>
+                    <option value="ovoshnyaya">Овощная</option>
+                    <option value="derevenskaya">Деревенская</option>
+                </select>
+            </fieldset>
+
+            <!-- Раздел дополнительных опций -->
+            <fieldset>
+                <legend>Дополнительные опции</legend>
+                <label for="quantity">Количество:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+                <label for="size">Размер:</label>
+                <select id="size" name="size">
+                    <option value="small">Маленькая</option>
+                    <option value="medium">Средняя</option>
+                    <option value="large">Большая</option>
+                </select>
+
+                <label for="toppings">Добавки:</label>
+                <select id="toppings" name="toppings" multiple>
+                    <option value="extra-cheese">Дополнительный сыр</option>
+                    <option value="mushrooms">Грибы</option>
+                    <option value="olives">Маслины</option>
+                    <option value="peppers">Перец</option>
+                </select>
+
+                <label for="comments">Комментарии:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </fieldset>
+
+            <button type="submit">Заказать</button>
+        </form>
+    </main>
+</body>
+</html>

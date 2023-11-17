@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вычисление гипотенузы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin: 0 auto;
+			max-width:400px;
+			padding: 20px
+        }
+
+        label {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function calculateHypotenuse() {
+            var leg = parseFloat(document.getElementById('leg').value);
+            var angle = parseFloat(document.getElementById('angle').value);
+
+            if (isNaN(leg) || isNaN(angle)) {
+                alert('Пожалуйста, введите корректные числа.');
+                return;
+            }
+
+            var hypotenuse = leg / Math.sin(angle * (Math.PI / 180));
+
+            alert('Длина гипотенузы: ' + hypotenuse.toFixed(2));
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Вычисление длины гипотенузы</h2>
+
+    <form onsubmit="calculateHypotenuse(); return false;">
+        <label for="leg">Длина катета:</label>
+        <input type="number" id="leg" required>
+
+        <label for="angle">Противолежащий угол (в градусах):</label>
+        <input type="number" id="angle" required>
+
+        <button type="submit">Вычислить</button>
+    </form>
+
+</body>
+</html>
